@@ -9,11 +9,11 @@ import Messages from "./Message/Message";
 
 
 
-let newReply = React.createRef() /* create ref to form */
-let createAnswer = () => {
-  let text = newReply.current.value;
-  alert (text);
-}
+let newReply = React.createRef() 
+
+/* create ref to form */
+
+
 
 
 
@@ -22,6 +22,11 @@ const Message = (props) => {
 };
 
 let Dialogs = (props) => {
+  let createAnswer = () => {
+    
+    props.createAnswer();
+    props.updateAnswer("");
+  }
   
   
 
@@ -33,6 +38,11 @@ let Dialogs = (props) => {
     <Message message={message.message} id={message.id} />
   ));
 
+  let onMessageChange = () => {
+let text = newReply.current.value;
+props.updateAnswer(text);
+  }
+
   return (
     <div className={classes.dialogs}>
       <div className={classes.dialogsItems}>
@@ -40,7 +50,7 @@ let Dialogs = (props) => {
       <div className={classes.messages}>
         {messagesElements}
         <div>
-         <textarea ref = {newReply}></textarea>
+         <textarea onChange={onMessageChange} ref = {newReply} value={props.newReplyText}/>
          <div>
           <button onClick={createAnswer}>Answer</button>
          </div>
