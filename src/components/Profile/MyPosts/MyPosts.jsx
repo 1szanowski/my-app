@@ -14,13 +14,14 @@ let newPostElement = React.createRef() /*create link to textarea*/
   let addPost = () => {
    
      /*get values from textarea*/
-    props.addPost();
+    props.dispatch({type: "ADD-POST"});
     
   };
 
 let onPostChange = () => {
   let text = newPostElement.current.value;
-  props.updateNewPostText(text);
+  let action = {type: "UPDATE-NEW-POST-TEXT", newText: text}
+  props.dispatch(action);
 };
 
   

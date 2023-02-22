@@ -17,11 +17,9 @@ export let callsubscriber = (state) => {
     <React.StrictMode>
       <BrowserRouter>
         <App
-          state={store.getState()}
-          addPost={store.addPost}
-          updateNewPostText={store.updateNewPostText}
-          createAnswer={store.createAnswer}
-          updateAnswer={store.updateAnswer}
+          state={state}
+          dispatch={store.dispatch.bind(store)}
+         
         />
       </BrowserRouter>
     </React.StrictMode>

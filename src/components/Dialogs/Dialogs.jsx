@@ -22,10 +22,10 @@ const Message = (props) => {
 };
 
 let Dialogs = (props) => {
+
   let createAnswer = () => {
     
-    props.createAnswer();
-    props.updateAnswer("");
+    props.dispatch({type : "CREATE-ANSWER"})
   }
   
   
@@ -40,7 +40,7 @@ let Dialogs = (props) => {
 
   let onMessageChange = () => {
 let text = newReply.current.value;
-props.updateAnswer(text);
+props.dispatch({type : "UPDATE-ANSWER", newText : text})
   }
 
   return (
