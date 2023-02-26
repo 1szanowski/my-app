@@ -2,6 +2,13 @@ import React from "react"
 import { Component } from "react";
 import classes from "../MyPosts/MyPosts.module.css";
 import Post from "./Post/Post";
+import { addPostActionCreator } from "../../../redux/state";
+import { updateNewPostTextActionCreator } from "../../../redux/state";
+
+
+
+
+
 
 const MyPosts = (props) => {
   let postsElements = props.postData.map((el) => (
@@ -14,13 +21,13 @@ let newPostElement = React.createRef() /*create link to textarea*/
   let addPost = () => {
    
      /*get values from textarea*/
-    props.dispatch({type: "ADD-POST"});
+    props.dispatch(addPostActionCreator());
     
   };
 
 let onPostChange = () => {
   let text = newPostElement.current.value;
-  let action = {type: "UPDATE-NEW-POST-TEXT", newText: text}
+  let action = updateNewPostTextActionCreator(text);
   props.dispatch(action);
 };
 
