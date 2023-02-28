@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 import classes from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Messages from "./Message/Message";
-import { addMessageActionCreator } from "../../redux/state";
-import { updateMessageActionCreator } from "../../redux/state";
+import { addMessageActionCreator } from "../../redux/dialogs-reducer";
+import { updateMessageActionCreator } from "../../redux/dialogs-reducer";
 
 let newReply = React.createRef();
 
@@ -18,12 +18,13 @@ const Message = (props) => {
 
 
 
-let Dialogs = (props) => {
+const Dialogs = (props) => {
+
   let createAnswer = () => {
     props.dispatch(addMessageActionCreator());
   };
 
-  let dialogsElements = props.state.dialogsData.map((dialog) => (
+  let dialogsElements = props.state.dialogsData.map((dialog) => ( 
     <DialogItem name={dialog.name} id={dialog.id} />
   ));
 
@@ -35,17 +36,17 @@ let Dialogs = (props) => {
     let text = newReply.current.value;
     props.dispatch(updateMessageActionCreator(text));
   };
-
+ 
   return (
     <div className={classes.dialogs}>
       <div className={classes.dialogsItems}>{dialogsElements}</div>
       <div className={classes.messages}>
         {messagesElements}
         <div>
-          <textarea
+          <textarea placeholder="Enter your message"
             onChange={onMessageChange}
             ref={newReply}
-            value={props.newReplyText}
+            value={props.state.newReplyText}
           />
           <div>
             <button onClick={createAnswer}>Answer</button>

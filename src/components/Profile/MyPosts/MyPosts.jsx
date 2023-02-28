@@ -2,8 +2,8 @@ import React from "react"
 import { Component } from "react";
 import classes from "../MyPosts/MyPosts.module.css";
 import Post from "./Post/Post";
-import { addPostActionCreator } from "../../../redux/state";
-import { updateNewPostTextActionCreator } from "../../../redux/state";
+import { addPostActionCreator } from "../../../redux/profile-reducer";
+import { updateNewPostTextActionCreator } from "../../../redux/profile-reducer";
 
 
 
@@ -38,7 +38,7 @@ let onPostChange = () => {
       <h3> My posts</h3>
       <div>
         <div>
-          <textarea onChange={onPostChange}  ref={newPostElement} value ={props.newPostText}/> 
+          <textarea placeholder="talk to Matrix.." onChange={onPostChange}  ref={newPostElement} value ={props.newPostText}/> 
         </div>
         <div>
           <button onClick={addPost}>Add Post</button>
