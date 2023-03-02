@@ -20,21 +20,25 @@ const Message = (props) => {
 
 const Dialogs = (props) => {
 
+  let state = props.dialogsPage;
+
   let createAnswer = () => {
-    props.dispatch(addMessageActionCreator());
+    props.addMessage();
+    
   };
 
-  let dialogsElements = props.state.dialogsData.map((dialog) => ( 
+  let dialogsElements = state.dialogsData.map((dialog) => ( 
     <DialogItem name={dialog.name} id={dialog.id} />
   ));
 
-  let messagesElements = props.state.messagesData.map((message) => (
+  let messagesElements = state.messagesData.map((message) => (
     <Message message={message.message} id={message.id} />
   ));
 
   let onMessageChange = () => {
     let text = newReply.current.value;
-    props.dispatch(updateMessageActionCreator(text));
+    props.updateMessage(text);
+    
   };
  
   return (
@@ -46,7 +50,7 @@ const Dialogs = (props) => {
           <textarea placeholder="Enter your message"
             onChange={onMessageChange}
             ref={newReply}
-            value={props.state.newReplyText}
+            value={state.newReplyText}
           />
           <div>
             <button onClick={createAnswer}>Answer</button>
