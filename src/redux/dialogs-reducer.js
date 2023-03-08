@@ -18,6 +18,9 @@ let InitialState = {
 }
 
 const dialogsReducer = (state = InitialState , action) => {
+
+
+  
   switch (action.type) {
     case CREATE_ANSWER:
       let newMessage = {
