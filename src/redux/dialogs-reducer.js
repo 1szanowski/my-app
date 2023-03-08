@@ -15,27 +15,24 @@ let InitialState = {
     { id: 3, name: "Vader" },
     { id: 4, name: "Skywalker" },
   ],
-}
-
-const dialogsReducer = (state = InitialState , action) => {
-
-
-  
+};
+///// new version /////
+const dialogsReducer = (state = InitialState, action) => {
   switch (action.type) {
+    
     case CREATE_ANSWER:
-      let newMessage = {
-        id: 5,
-        message: state.newReplyText,
+      let newMessage = state.newReplyText;
+      return {
+        ...state,
+        newReplyText: "",
+        messagesData: [...state.messagesData, { id: 5, message: newMessage }],
       };
-      let stateCopy = {...state};
-      stateCopy.messagesData = [...state.messagesData];
-      stateCopy.messagesData.push(newMessage);
-      stateCopy.newReplyText = "";
-      return stateCopy;
+      
+
     case UPDATE_ANSWER: {
-      let stateCopy = {...state};
-      stateCopy.newReplyText = action.newText;
-      return stateCopy;
+      return { ...state, newReplyText: action.newText };
+
+      
     }
     default:
       return state;

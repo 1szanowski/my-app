@@ -7,7 +7,7 @@ import { updateNewPostTextActionCreator } from "../../../redux/profile-reducer";
 
 const MyPosts = (props) => {
   let postsElements = props.postData.map((el) => (
-    <Post message={el.message} likes={el.likesCount} />
+    <Post message={el.message} key ={el.id} likes={el.likesCount} />
   ));
 
   let newPostElement = React.createRef(); /*create link to textarea*/

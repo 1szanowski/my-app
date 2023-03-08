@@ -28,11 +28,11 @@ const Dialogs = (props) => {
   };
 
   let dialogsElements = state.dialogsData.map((dialog) => ( 
-    <DialogItem name={dialog.name} id={dialog.id} />
+    <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} />
   ));
 
   let messagesElements = state.messagesData.map((message) => (
-    <Message message={message.message} id={message.id} />
+    <Message message={message.message} key = {message.id}  />
   ));
 
   let onMessageChange = () => {
