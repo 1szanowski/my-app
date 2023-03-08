@@ -9,6 +9,7 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { addPost } from "./redux/store";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = (props) => {
   
@@ -31,6 +32,7 @@ const App = (props) => {
           <Route path="/music" element={<Music />} />
           <Route path="/News" element={<News />} />
           <Route path="/Settings" element={<Settings />} />
+          <Route path="/Users" element={<UsersContainer />} />
         </Routes>
       </div>
     </div>
